@@ -2,4 +2,8 @@
 	<string name="app_name">Dilirik</string>
 	<string name="enter">Enter</string>
 	<string name="about">About</string>
+	<string name="title">Title</string>
+	<string name="sample_title">Howlin 404 [Just a very longest text made for testing overflow]</string>
+	<string name="album_thumbnail">album thumbnail</string>
+	<string name="sample_genre">Kpop</string>
 </resources>
