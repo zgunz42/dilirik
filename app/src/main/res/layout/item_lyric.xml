@@ -3,7 +3,13 @@
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
+		android:clickable="true"
+		android:focusable="true"
+		android:foreground="?android:attr/selectableItemBackground"
+		app:cardElevation="@dimen/activity_vertical_margin"
 		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/activity_horizontal_margin"
+		app:cardCornerRadius="5dp"
 		android:layout_width="match_parent">
 	<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
@@ -11,12 +17,17 @@
 
 		<ImageView
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars"
-				android:id="@+id/music_thumbnail" app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+				android:layout_height="wrap_content"
+				android:scaleX="0.7"
+				android:scaleY="0.7"
+				tools:srcCompat="@tools:sample/avatars"
+				android:id="@+id/music_thumbnail"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
 				android:contentDescription="@string/album_thumbnail"/>
 		<TextView
-				android:text="@string/sample_genre"
+				tools:hint="@sample/music_genre"
 				android:textSize="17sp"
 				android:textStyle="bold"
 				android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -30,7 +41,7 @@
 				android:paddingEnd="3pt" android:paddingTop="1pt" android:paddingBottom="1pt"
 				android:background="@drawable/genre_badge" android:textColor="#8BC34A"/>
 		<TextView
-				android:text="@string/sample_title"
+				tools:hint="@sample/music_title"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:id="@+id/textView3"
@@ -44,7 +55,7 @@
 				android:textIsSelectable="true"
 				android:maxLines="2"
 				android:layout_marginTop="8dp"
-				android:ellipsize="marquee"
+				android:ellipsize="end"
 				app:layout_constrainedHeight="false"
 				app:layout_constraintHeight_max="wrap"/>
 	</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@
 	<item
 			android:id="@+id/item_about"
 			android:title="@string/about"
-			android:icon="@android:drawable/ic_menu_info_details"
+			android:icon="@android:drawable/sym_action_chat"
 			app:showAsAction="always"
 		/>
 </menu>

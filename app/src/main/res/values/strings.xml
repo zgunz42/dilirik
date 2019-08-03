@@ -6,4 +6,12 @@
 	<string name="sample_title">Howlin 404 [Just a very longest text made for testing overflow]</string>
 	<string name="album_thumbnail">album thumbnail</string>
 	<string name="sample_genre">Kpop</string>
+	<string name="my_name">I Kadek Adi Gunawan</string>
+	<string name="my_email">adi_gunawan@live.com</string>
+	<string name="label_title">Title</string>
+	<string name="artist">Artist</string>
+	<string name="label_release">Release Date</string>
+	<string name="label_producer">Producer</string>
+	<string name="tag_genre">Genre</string>
+	<string name="label_lyric">Lyric</string>
 </resources>
