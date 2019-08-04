@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         musicView.hasFixedSize()
 
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

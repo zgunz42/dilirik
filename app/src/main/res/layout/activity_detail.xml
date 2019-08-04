@@ -118,7 +118,6 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" android:id="@+id/music_description"
 					android:textIsSelectable="true"
-					android:letterSpacing="30.0sp"
 					android:textAlignment="viewStart"
 					app:autoSizeTextType="none"
 					android:elegantTextHeight="true" android:textScaleX="1.0"

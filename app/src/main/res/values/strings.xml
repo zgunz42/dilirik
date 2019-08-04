@@ -10,4 +10,6 @@
 	<string name="label_producer">Producer</string>
 	<string name="tag_genre">Genre</string>
 	<string name="label_description">Description</string>
+	<string name="my_name">I Kadek Adi Gunawan</string>
+	<string name="my_email">adi_gunawan@live.com</string>
 </resources>
