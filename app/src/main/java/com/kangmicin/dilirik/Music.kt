@@ -1,6 +1,7 @@
 package com.kangmicin.dilirik
 
 import java.io.Serializable
+import java.util.*
 
 data class Music(
     var title: String = "",
@@ -10,7 +11,7 @@ data class Music(
     var lyric: String = "",
     var artist: String = "",
     var producer: Array<String> = emptyArray(),
-    var release: Long = 0
+    var release: String = ""
 ) : Serializable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

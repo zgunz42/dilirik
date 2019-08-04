@@ -46,21 +46,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun streamMusicData(raw: String): ArrayList<Music>? {
-        val klakon = Klaxon()
+        val klaxon = Klaxon()
         val result = ArrayList<Music>()
         JsonReader(StringReader(raw)).use { reader ->
-            reader.beginObject {
-                when (reader.nextName()) {
-                    "musics" -> {
-                        for (music in reader.nextArray()) {
-                            klakon.parse<Music>(reader)?.let {
-                                result.add(it)
-                            }
-                        }
-                    }
+            reader.beginArray {
+                while (reader.hasNext()) {
+                    klaxon.parse<Music>(reader)?.let { result.add(it) }
                 }
-
-
             }
         }
         return result
@@ -68,21 +60,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadData(): String {
         val input: InputStream = resources.openRawResource(R.raw.lyrics)
-        val writer: Writer = StringWriter()
-        val buffer = CharArray(1024)
+        val builder: StringBuilder = StringBuilder()
         input.use {
             val reader: Reader = BufferedReader(InputStreamReader(it, "UTF-8"))
-            var n: Int
-            while (true) {
-                n = reader.read(buffer)
-                if (n == 1) {
-                    break
-                }
-                writer.write(buffer, 0, n)
+            for(line in reader.readLines()) {
+                builder.append(line)
             }
         }
 
-        return writer.toString()
+        return builder.toString()
     }
 
     private fun openAboutPage() {

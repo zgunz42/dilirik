@@ -27,7 +27,7 @@ class ListMusicAdapter(private var musicList: ArrayList<Music>, private var list
 
         Glide.with(holder.itemView.context)
             .load(thumbnail)
-            .apply(RequestOptions.overrideOf(55, 55))
+            .apply(RequestOptions.overrideOf(255, 255))
             .into(holder.thumbnail)
 
         holder.title.text = title
