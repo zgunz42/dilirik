@@ -11,7 +11,7 @@
 			android:layout_width="255dp"
 			android:layout_height="255dp"
 			android:layout_marginTop="60dp"
-			android:id="@+id/avatar"
+			android:id="@+id/music_thumbnail"
 			tools:src="@tools:sample/avatars"
 			app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"/>
@@ -19,7 +19,7 @@
 			android:text="@string/my_name"
 			android:layout_marginTop="60dp"
 			android:textStyle="bold"
-			app:layout_constraintTop_toBottomOf="@+id/avatar"
+			app:layout_constraintTop_toBottomOf="@+id/music_thumbnail"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			android:layout_width="wrap_content"

@@ -10,7 +10,7 @@
 			android:layout_height="match_parent">
 
 		<androidx.appcompat.widget.AppCompatImageView
-				android:id="@+id/avatar"
+				android:id="@+id/music_thumbnail"
 				tools:src="@tools:sample/avatars"
 				android:layout_width="wrap_content"
 				android:scaleY="0.85"
@@ -18,9 +18,9 @@
 				android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"/>
 		<TextView
-				app:layout_constraintTop_toBottomOf="@+id/avatar"
-				app:layout_constraintEnd_toEndOf="@+id/avatar"
-				android:paddingTop="8dp"
+				android:id="@+id/music_title"
+				app:layout_constraintTop_toBottomOf="@+id/music_thumbnail"
+				app:layout_constraintEnd_toEndOf="@+id/music_thumbnail"
 				android:paddingLeft="8dp"
 				android:paddingRight="8dp"
 				android:maxLines="2"

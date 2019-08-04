@@ -25,7 +25,7 @@
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
 				app:layout_constraintBottom_toBottomOf="parent"
-				android:contentDescription="@string/album_thumbnail"/>
+				android:contentDescription="@string/music_thumbnail"/>
 		<TextView
 				tools:hint="@sample/music_genre"
 				android:textSize="17sp"
@@ -44,7 +44,7 @@
 				tools:hint="@sample/music_title"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:id="@+id/textView3"
+				android:id="@+id/music_title"
 				app:layout_constraintLeft_toRightOf="@+id/music_thumbnail"
 				app:layout_constraintTop_toBottomOf="@id/music_genre"
 				android:textSize="18sp"

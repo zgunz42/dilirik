@@ -18,7 +18,7 @@
 				android:layout_marginTop="@dimen/activity_horizontal_margin"
 				android:layout_height="256dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/album_thumbnail"
 				app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-				android:contentDescription="@string/album_thumbnail"/>
+				android:contentDescription="@string/music_thumbnail"/>
 		<LinearLayout
 				app:layout_constraintStart_toEndOf="@+id/album_thumbnail"
 				app:layout_constraintTop_toTopOf="parent"
@@ -107,16 +107,16 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:id="@+id/music_genre"/>
 			<TextView
-					android:text="@string/label_lyric"
+					android:text="@string/label_description"
 					android:layout_marginTop="@dimen/activity_vertical_margin"
 					android:layout_marginBottom="8dp"
 					android:textStyle="bold"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:id="@+id/label_lyric"/>
+					android:layout_height="wrap_content" android:id="@+id/label_description"/>
 			<TextView
-					tools:hint="@sample/lyric.json/data/lyric"
+					tools:hint="@sample/music_description"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:id="@+id/music_lyric"
+					android:layout_height="wrap_content" android:id="@+id/music_description"
 					android:textIsSelectable="true"
 					android:letterSpacing="30.0sp"
 					android:textAlignment="viewStart"
