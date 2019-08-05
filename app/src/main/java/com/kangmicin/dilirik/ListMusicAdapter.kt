@@ -23,7 +23,7 @@ class ListMusicAdapter(private var musicList: ArrayList<Music>, private var list
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var music: Music = musicList[position]
-        val (title, thumbnail, genre) = music
+        val (title, thumbnail, genre, artist) = music
 
         Glide.with(holder.itemView.context)
             .load(thumbnail)
@@ -32,6 +32,7 @@ class ListMusicAdapter(private var musicList: ArrayList<Music>, private var list
 
         holder.title.text = title
         holder.genre.text = genre
+        holder.artis.text = artist
 
         holder.itemView.setOnClickListener{
             listerner?.invoke(music)
@@ -42,5 +43,6 @@ class ListMusicAdapter(private var musicList: ArrayList<Music>, private var list
         var thumbnail: ImageView = itemView.findViewById(R.id.music_thumbnail)
         var genre: TextView = itemView.findViewById(R.id.music_genre)
         var title: TextView = itemView.findViewById(R.id.music_title)
+        var artis: TextView = itemView.findViewById(R.id.music_artist)
     }
 }

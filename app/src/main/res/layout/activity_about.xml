@@ -8,16 +8,16 @@
 		tools:context=".AboutActivity">
 
 	<de.hdodenhof.circleimageview.CircleImageView
-			android:layout_width="255dp"
-			android:layout_height="255dp"
+			android:layout_width="155dp"
+			android:layout_height="155dp"
 			android:layout_marginTop="60dp"
 			android:id="@+id/music_thumbnail"
-			tools:src="@tools:sample/avatars"
+			android:src="@drawable/photo_adigunawan"
 			app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"/>
 	<TextView
 			android:text="@string/my_name"
-			android:layout_marginTop="60dp"
+			android:layout_marginTop="16dp"
 			android:textStyle="bold"
 			app:layout_constraintTop_toBottomOf="@+id/music_thumbnail"
 			app:layout_constraintStart_toStartOf="parent"
@@ -33,5 +33,5 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:id="@+id/textView2" android:textSize="24sp"/>
+			android:layout_height="wrap_content" android:id="@+id/textView2" android:textSize="16sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

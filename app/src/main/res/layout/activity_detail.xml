@@ -12,15 +12,15 @@
 			tools:context=".DetailActivity">
 
 		<ImageView
-				android:layout_width="197dp"
+				android:layout_width="152dp"
 				android:scaleType="centerCrop"
 				android:layout_marginStart="@dimen/activity_vertical_margin"
 				android:layout_marginTop="@dimen/activity_horizontal_margin"
-				android:layout_height="256dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/album_thumbnail"
+				android:layout_height="242dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/music_thumbnail"
 				app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
 				android:contentDescription="@string/music_thumbnail"/>
 		<LinearLayout
-				app:layout_constraintStart_toEndOf="@+id/album_thumbnail"
+				app:layout_constraintStart_toEndOf="@+id/music_thumbnail"
 				app:layout_constraintTop_toTopOf="parent"
 				android:layout_marginTop="@dimen/activity_vertical_margin"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
 			<TextView
 					tools:hint="2 September 2019"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:id="@+id/release"/>
+					android:layout_height="wrap_content" android:id="@+id/music_release"/>
 			<TextView
 					android:text="@string/artist"
 					android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -58,7 +58,7 @@
 			<TextView
 					tools:hint="Dean Trbl"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:id="@+id/artist"/>
+					android:layout_height="wrap_content" android:id="@+id/music_artist"/>
 			<TextView
 					android:text="@string/label_producer"
 					android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -68,21 +68,21 @@
 			<TextView
 					tools:hint="G-Dragon, Teddy Park, Yang Hyun-suk"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:id="@+id/producer"/>
+					android:layout_height="wrap_content" android:id="@+id/music_producer"/>
 		</LinearLayout>
 		<androidx.recyclerview.widget.RecyclerView
 				android:layout_width="match_parent"
 				android:layout_marginTop="@dimen/activity_vertical_margin"
 				tools:itemCount="6"
-				android:id="@+id/same"
-				app:layout_constraintTop_toBottomOf="@+id/album_thumbnail"
+				android:id="@+id/music_recomendation"
+				app:layout_constraintTop_toBottomOf="@+id/music_thumbnail"
 				android:layout_height="wrap_content" android:scrollbars="horizontal"
 				android:orientation="horizontal"
 				android:scrollbarStyle="outsideOverlay"
 				tools:listitem="@layout/card_lyric"
 				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 		<LinearLayout
-				app:layout_constraintTop_toBottomOf="@+id/same"
+				app:layout_constraintTop_toBottomOf="@+id/music_recomendation"
 				android:orientation="vertical"
 				android:layout_marginTop="@dimen/activity_vertical_margin"
 				android:layout_marginStart="@dimen/activity_horizontal_margin"

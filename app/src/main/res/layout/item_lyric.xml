@@ -62,5 +62,13 @@
 				android:ellipsize="end"
 				app:layout_constrainedHeight="false"
 				app:layout_constraintHeight_max="wrap"/>
+		<TextView
+				tools:hint="DEAN"
+				android:layout_marginTop="4dp"
+				android:textColor="#AAAAAA"
+				app:layout_constraintTop_toBottomOf="@+id/music_title"
+				app:layout_constraintLeft_toRightOf="@+id/music_thumbnail"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/music_artist"/>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

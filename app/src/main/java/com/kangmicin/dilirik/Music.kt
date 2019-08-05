@@ -7,9 +7,9 @@ data class Music(
     var title: String = "",
     var thumbnail: String = "",
     var genre: String = "",
+    var artist: String = "",
     var description: String = "",
     var lyric: String = "",
-    var artist: String = "",
     var producer: Array<String> = emptyArray(),
     var release: String = ""
 ) : Serializable {
