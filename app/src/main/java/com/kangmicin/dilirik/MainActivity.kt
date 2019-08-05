@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         streamMusicData(loadData())?.let { musics.addAll(it) }
 
-        musicView.adapter = ListMusicAdapter(musics) { openDetailPage(it) }
+        musicView.adapter = ListMusicAdapter(musics, Display.LIST) { openDetailPage(it) }
 
         musicView.hasFixedSize()
 
@@ -73,12 +73,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openAboutPage() {
-        var openPage = Intent(this@MainActivity, AboutActivity::class.java)
+        val openPage = Intent(this@MainActivity, AboutActivity::class.java)
         startActivity(openPage)
     }
 
     private fun openDetailPage(music: Music) {
-        var detailPage = Intent(this@MainActivity, DetailActivity::class.java)
+        val detailPage = Intent(this@MainActivity, DetailActivity::class.java)
         detailPage.putExtra(PICK_MUSIC, music)
 
         startActivity(detailPage)

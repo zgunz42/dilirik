@@ -1,5 +1,6 @@
 package com.kangmicin.dilirik
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,33 +10,69 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class ListMusicAdapter(private var musicList: ArrayList<Music>, private var listerner: ((music: Music)->Unit)? = null) :
-    RecyclerView.Adapter<ListMusicAdapter.ListViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_lyric, parent, false)
 
-        return ListViewHolder(view)
+
+class ListMusicAdapter(private var musicList: ArrayList<Music>, private var display: Display, private var listener: ((music: Music)->Unit)? = null) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        Log.d("type is", this.display.toString())
+
+        return when(this.display) {
+            Display.LIST -> {
+                val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_lyric, parent, false)
+                ListViewHolder(view)
+            }
+
+            Display.CARD -> {
+                val view: View =  LayoutInflater.from(parent.context).inflate(R.layout.card_lyric, parent, false)
+                CardViewHolder(view)
+            }
+        }
+
+
     }
+
+
 
     override fun getItemCount(): Int {
         return musicList.size
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var music: Music = musicList[position]
         val (title, thumbnail, genre, artist) = music
 
-        Glide.with(holder.itemView.context)
-            .load(thumbnail)
-            .apply(RequestOptions.overrideOf(255, 255))
-            .into(holder.thumbnail)
+        if (this.display === Display.LIST) {
+            var innerHolder = this.ListViewHolder(holder.itemView)
+            Glide.with(holder.itemView.context)
+                .load(thumbnail)
+                .apply(RequestOptions.overrideOf(255, 255))
+                .into(innerHolder.thumbnail)
 
-        holder.title.text = title
-        holder.genre.text = genre
-        holder.artis.text = artist
+            innerHolder.title.text = title
+            innerHolder.genre.text = genre
+            innerHolder.artist.text = artist
 
-        holder.itemView.setOnClickListener{
-            listerner?.invoke(music)
+            innerHolder.itemView.setOnClickListener{
+                listener?.invoke(music)
+            }
+        }
+
+        if (this.display === Display.CARD) {
+            var innerHolder = this.CardViewHolder(holder.itemView)
+
+            Glide.with(holder.itemView.context)
+                .load(thumbnail)
+                .apply(RequestOptions.overrideOf(255, 255))
+                .into(innerHolder.thumbnail)
+
+            innerHolder.title.text = title
+
+            innerHolder.itemView.setOnClickListener{
+                listener?.invoke(music)
+            }
         }
     }
 
@@ -43,6 +80,11 @@ class ListMusicAdapter(private var musicList: ArrayList<Music>, private var list
         var thumbnail: ImageView = itemView.findViewById(R.id.music_thumbnail)
         var genre: TextView = itemView.findViewById(R.id.music_genre)
         var title: TextView = itemView.findViewById(R.id.music_title)
-        var artis: TextView = itemView.findViewById(R.id.music_artist)
+        var artist: TextView = itemView.findViewById(R.id.music_artist)
+    }
+
+    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var thumbnail: ImageView = itemView.findViewById(R.id.music_thumbnail)
+        var title: TextView = itemView.findViewById(R.id.music_title)
     }
 }

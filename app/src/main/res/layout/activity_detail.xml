@@ -38,7 +38,7 @@
 			<TextView
 					tools:hint="@sample/music_title"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content" android:id="@+id/title"/>
+					android:layout_height="wrap_content" android:id="@+id/music_title"/>
 			<TextView
 					android:text="@string/label_release"
 					android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -98,7 +98,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" android:id="@+id/textView4"/>
 			<TextView
-					tools:hint="@string/sample_genre"
+					tools:hint="@sample/music_genre"
 					android:paddingStart="3pt"
 					android:paddingEnd="3pt"
 					android:paddingTop="1pt"
