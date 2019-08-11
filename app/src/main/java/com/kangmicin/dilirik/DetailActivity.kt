@@ -7,23 +7,18 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.beust.klaxon.JsonReader
-import com.beust.klaxon.Klaxon
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import java.io.*
 import kotlin.collections.ArrayList
 
 class DetailActivity : AppCompatActivity() {
-    private var musics: ArrayList<Music> = arrayListOf()
-
     private lateinit var lyricBottomSheetFragment: LyricBottomSheetFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setupActionBar()
 
         val music: Music = intent?.extras?.getSerializable(MainActivity.PICK_MUSIC) as Music
         val thumbnail: ImageView = findViewById(R.id.music_thumbnail)
@@ -48,15 +43,16 @@ class DetailActivity : AppCompatActivity() {
         producer.text = music.producer.joinToString()
         release.text = Util.instance.displayDate(music.release)
 
-        streamMusicData(loadData())?.let { musics.addAll(it) }
-
-        supportActionBar?.title = getString(R.string.detail_title)
-
         lyricBottomSheetFragment = LyricBottomSheetFragment(music.lyric)
 
-        recommended.adapter = ListMusicAdapter(musics, Display.CARD) { openDetailPage(it) }
+        recommended.adapter = ListMusicAdapter(loadListData(), Display.CARD) { openDetailPage(it) }
 
         recommended.hasFixedSize()
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.title = getString(R.string.detail_title)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun openDetailPage(music: Music) {
@@ -66,30 +62,11 @@ class DetailActivity : AppCompatActivity() {
         startActivity(detailPage)
     }
 
-    private fun streamMusicData(raw: String): ArrayList<Music>? {
-        val klaxon = Klaxon()
-        val result = ArrayList<Music>()
-        JsonReader(StringReader(raw)).use { reader ->
-            reader.beginArray {
-                while (reader.hasNext()) {
-                    klaxon.parse<Music>(reader)?.let { result.add(it) }
-                }
-            }
-        }
-        return result
-    }
 
-    private fun loadData(): String {
-        val input: InputStream = resources.openRawResource(R.raw.lyrics)
-        val builder: StringBuilder = StringBuilder()
-        input.use {
-            val reader: Reader = BufferedReader(InputStreamReader(it, "UTF-8"))
-            for(line in reader.readLines()) {
-                builder.append(line)
-            }
-        }
+    private fun loadListData(): ArrayList<Music> {
+        val data = resources.openRawResource(R.raw.lyrics)
 
-        return builder.toString()
+        return Loader.instance.loadMusicLibrary(data)
     }
 
     fun showLyric(view: View) {

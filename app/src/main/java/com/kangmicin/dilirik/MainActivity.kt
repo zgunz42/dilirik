@@ -1,24 +1,16 @@
 package com.kangmicin.dilirik
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.RecyclerView
-import com.beust.klaxon.JsonReader
-import com.beust.klaxon.Klaxon
-import java.io.*
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var musicView: RecyclerView
-    private var musics: ArrayList<Music> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +18,21 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Lyric List"
 
+        setupMusicList()
+    }
+
+    private fun setupMusicList() {
         musicView = findViewById(R.id.lyrics)
 
-        streamMusicData(loadData())?.let { musics.addAll(it) }
-
-        musicView.adapter = ListMusicAdapter(musics, Display.LIST) { openDetailPage(it) }
+        musicView.adapter = ListMusicAdapter(loadListData(), Display.LIST) { openDetailPage(it) }
 
         musicView.hasFixedSize()
+    }
 
+    private fun loadListData(): ArrayList<Music> {
+        val data = resources.openRawResource(R.raw.lyrics)
+
+        return Loader.instance.loadMusicLibrary(data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -48,32 +47,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun streamMusicData(raw: String): ArrayList<Music>? {
-        val klaxon = Klaxon()
-        val result = ArrayList<Music>()
-        JsonReader(StringReader(raw)).use { reader ->
-            reader.beginArray {
-                while (reader.hasNext()) {
-                    klaxon.parse<Music>(reader)?.let { result.add(it) }
-                }
-            }
-        }
-        return result
-    }
-
-    private fun loadData(): String {
-        val input: InputStream = resources.openRawResource(R.raw.lyrics)
-        val builder: StringBuilder = StringBuilder()
-        input.use {
-            val reader: Reader = BufferedReader(InputStreamReader(it, "UTF-8"))
-            for(line in reader.readLines()) {
-                builder.append(line)
-            }
-        }
-
-        return builder.toString()
     }
 
     private fun openAboutPage() {
