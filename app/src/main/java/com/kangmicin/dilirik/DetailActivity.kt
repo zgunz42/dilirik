@@ -18,6 +18,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         var music: Music = intent?.extras?.getSerializable(MainActivity.PICK_MUSIC) as Music
         var thumbnail: ImageView = findViewById(R.id.music_thumbnail)
         var genre: TextView = findViewById(R.id.music_genre)
