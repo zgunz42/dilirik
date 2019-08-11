@@ -2,6 +2,8 @@
 	<string name="app_name">Dilirik</string>
 	<string name="enter">Enter</string>
 	<string name="about">About</string>
+	<string name="detail_title">Detail Music</string>
+	<string name="about_title">About Me</string>
 	<string name="title">Title</string>
 	<string name="music_thumbnail">album thumbnail</string>
 	<string name="label_title">Title</string>
@@ -12,4 +14,5 @@
 	<string name="label_description">Description</string>
 	<string name="my_name">I Kadek Adi Gunawan</string>
 	<string name="my_email">adi_gunawan@live.com</string>
+	<string name="lyric_button_label">Read Lyric</string>
 </resources>

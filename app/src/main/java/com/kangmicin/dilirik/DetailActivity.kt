@@ -3,6 +3,7 @@ package com.kangmicin.dilirik
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,21 +15,24 @@ import java.io.*
 
 class DetailActivity : AppCompatActivity() {
     private var musics: ArrayList<Music> = arrayListOf()
+
+    private lateinit var lyricBottomSheetFragment: LyricBottomSheetFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        var music: Music = intent?.extras?.getSerializable(MainActivity.PICK_MUSIC) as Music
-        var thumbnail: ImageView = findViewById(R.id.music_thumbnail)
-        var genre: TextView = findViewById(R.id.music_genre)
-        var title: TextView = findViewById(R.id.music_title)
-        var artis: TextView = findViewById(R.id.music_artist)
-        var release: TextView = findViewById(R.id.music_release)
-        var producer: TextView = findViewById(R.id.music_producer)
-        var description: TextView = findViewById(R.id.music_description)
-        var recomended: RecyclerView = findViewById(R.id.music_recomendation)
+        val music: Music = intent?.extras?.getSerializable(MainActivity.PICK_MUSIC) as Music
+        val thumbnail: ImageView = findViewById(R.id.music_thumbnail)
+        val genre: TextView = findViewById(R.id.music_genre)
+        val title: TextView = findViewById(R.id.music_title)
+        val artis: TextView = findViewById(R.id.music_artist)
+        val release: TextView = findViewById(R.id.music_release)
+        val producer: TextView = findViewById(R.id.music_producer)
+        val description: TextView = findViewById(R.id.music_description)
+        val recomended: RecyclerView = findViewById(R.id.music_recomendation)
 
         Glide.with(this.baseContext)
             .load(music.thumbnail)
@@ -43,6 +47,10 @@ class DetailActivity : AppCompatActivity() {
         description.text = music.description
 
         streamMusicData(loadData())?.let { musics.addAll(it) }
+
+        supportActionBar?.title = getString(R.string.detail_title)
+
+        lyricBottomSheetFragment = LyricBottomSheetFragment(music.lyric)
 
         recomended.adapter = ListMusicAdapter(musics, Display.CARD) { openDetailPage(it) }
 
@@ -80,5 +88,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         return builder.toString()
+    }
+
+    fun showLyric(view: View) {
+        if (supportFragmentManager !== null) {
+            lyricBottomSheetFragment.show(supportFragmentManager, "show_lyric")
+        }
     }
 }

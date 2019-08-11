@@ -2,4 +2,6 @@
 <resources>
 	<dimen name="activity_horizontal_margin">16dp</dimen>
 	<dimen name="activity_vertical_margin">16sp</dimen>
+	<dimen name="bottom_sheet_corner_radius">16dp</dimen>
+	<dimen name="bottom_sheet_top_padding">12dp</dimen>
 </resources>
