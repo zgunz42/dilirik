@@ -12,6 +12,11 @@ import com.beust.klaxon.Klaxon
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.*
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DetailActivity : AppCompatActivity() {
     private var musics: ArrayList<Music> = arrayListOf()
@@ -42,9 +47,9 @@ class DetailActivity : AppCompatActivity() {
         genre.text = music.genre
         title.text = music.title
         artis.text = music.artist
-        release.text = music.release
-        producer.text = music.producer.joinToString()
         description.text = music.description
+        producer.text = music.producer.joinToString()
+        release.text = Util.instance.displayDate(music.release)
 
         streamMusicData(loadData())?.let { musics.addAll(it) }
 
