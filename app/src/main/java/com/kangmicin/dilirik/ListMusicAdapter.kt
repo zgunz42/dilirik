@@ -48,6 +48,7 @@ class ListMusicAdapter(private var musicList: ArrayList<Music>, private var disp
             var innerHolder = this.ListViewHolder(holder.itemView)
             Glide.with(holder.itemView.context)
                 .load(thumbnail)
+                .placeholder(R.drawable.img)
                 .apply(RequestOptions.overrideOf(255, 255))
                 .into(innerHolder.thumbnail)
 

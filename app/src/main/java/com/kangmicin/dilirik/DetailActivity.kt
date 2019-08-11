@@ -12,10 +12,6 @@ import com.beust.klaxon.Klaxon
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import java.io.*
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
-import java.util.*
 import kotlin.collections.ArrayList
 
 class DetailActivity : AppCompatActivity() {
@@ -33,20 +29,21 @@ class DetailActivity : AppCompatActivity() {
         val thumbnail: ImageView = findViewById(R.id.music_thumbnail)
         val genre: TextView = findViewById(R.id.music_genre)
         val title: TextView = findViewById(R.id.music_title)
-        val artis: TextView = findViewById(R.id.music_artist)
+        val artist: TextView = findViewById(R.id.music_artist)
         val release: TextView = findViewById(R.id.music_release)
         val producer: TextView = findViewById(R.id.music_producer)
         val description: TextView = findViewById(R.id.music_description)
-        val recomended: RecyclerView = findViewById(R.id.music_recomendation)
+        val recommended: RecyclerView = findViewById(R.id.music_recomendation)
 
         Glide.with(this.baseContext)
             .load(music.thumbnail)
+            .placeholder(R.drawable.img)
             .apply(RequestOptions.overrideOf(255, 255))
             .into(thumbnail)
 
         genre.text = music.genre
         title.text = music.title
-        artis.text = music.artist
+        artist.text = music.artist
         description.text = music.description
         producer.text = music.producer.joinToString()
         release.text = Util.instance.displayDate(music.release)
@@ -57,9 +54,9 @@ class DetailActivity : AppCompatActivity() {
 
         lyricBottomSheetFragment = LyricBottomSheetFragment(music.lyric)
 
-        recomended.adapter = ListMusicAdapter(musics, Display.CARD) { openDetailPage(it) }
+        recommended.adapter = ListMusicAdapter(musics, Display.CARD) { openDetailPage(it) }
 
-        recomended.hasFixedSize()
+        recommended.hasFixedSize()
     }
 
     private fun openDetailPage(music: Music) {
